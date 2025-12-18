@@ -1,0 +1,11 @@
+env_ocr/
+venv/
+__pycache__/
+*.pyc
+.env
+*.pb
+*.jpg
+*.png
+venv_llm/
+venv_ocr/
+venv_preprocess/

@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+opencv-python-headless
+requests
+python-multipart
+httpx
+Pillow
