@@ -122,7 +122,6 @@ services:
       - MODELS_PATH=/app/models
     volumes:
       - ./shared_data:/app/shared_data
-      - ./models:/app/models:ro
     depends_on:
       ocr_service:
         condition: service_healthy

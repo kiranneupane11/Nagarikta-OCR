@@ -22,6 +22,14 @@ RUN pip install --no-cache-dir \
     "tensorflow-cpu==2.19.0" \
     -r requirements.txt
 
+# Install gdown in builder stage
+RUN pip install --no-cache-dir gdown
+
+#Download ID Card Detector
+RUN mkdir -p /app/models
+RUN gdown --id 1qkOnEaHc8VZDPj6YxRttqyr8p5EqzBNb -O /app/models/saved_model.pb && \
+    echo "Model downloaded successfully!"
+
 # SAFE cleanup - only remove obvious cache files, NOT package internals
 RUN find /opt/venv -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true && \
     find /opt/venv -name "*.pyc" -delete 2>/dev/null || true && \
@@ -55,6 +63,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy virtual environment from builder
 COPY --from=builder /opt/venv /opt/venv
 
+# Copy the downloaded model from the builder stage
+COPY --from=builder /app/models /app/models
+
 # Copy only needed application files
 COPY app.py config.py face_detector.py model_inference.py preprocessing.py ./
 
@@ -63,7 +74,7 @@ RUN mkdir -p /app/shared_data /app/models
 
 EXPOSE 8000
 
-HEALTHCHECK --interval=30s --timeout=10s --start-period=20s --retries=3 \
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
