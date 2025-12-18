@@ -40,9 +40,9 @@ This will start the following services:
 
 Verify services:
 
-curl http://localhost:9000/health
-curl http://localhost:8001/health
-curl http://localhost:8000/health
+- curl http://localhost:9000/health
+- curl http://localhost:8001/health
+- curl http://localhost:8000/health
 
 All should return:
 
