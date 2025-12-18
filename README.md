@@ -18,15 +18,15 @@ A microservice-based OCR project for Nepali citizenship cards, supporting both *
 
 - Docker & Docker Compose installed
 - At least 12 GB free disk space
-- Python 3.10 (if running outside Docker)
+- Python 3.10 
 
 ---
 
 ## Quick Start (Docker)
 
-1. Clone the repository:
-2. git clone https://github.com/kiranneupane11/Nagarikta-OCR.git
-3. cd Nagarikta-OCR
+- Clone the repository:
+- git clone https://github.com/kiranneupane11/Nagarikta-OCR.git
+- cd Nagarikta-OCR
    
 ### Build and start services: 
 - docker-compose up --build
