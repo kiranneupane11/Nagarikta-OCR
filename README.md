@@ -52,12 +52,3 @@ All should return:
 POST a request to the OCR API:
 
 curl -X POST "http://localhost:8000/preprocess" -F "file=@/path/to/your/image.png"
-
-## Project Structure
-micro-ocr/
-├─ ocr_service/         # OCR microservice (PaddleOCR + Tesseract fallback)
-├─ llm_service/         # LLM-based post-processing
-├─ preprocess_service/  # Preprocessing pipeline
-├─ models/              # Saved ID Detector model and label map
-├─ docker-compose.yml
-├─ README.md
