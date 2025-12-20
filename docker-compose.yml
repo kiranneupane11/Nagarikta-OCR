@@ -49,7 +49,6 @@ services:
     build:
       context: ./llm_service
       dockerfile: Dockerfile
-    image: micro-ocr/llm-service:latest
     container_name: micro-ocr-llm
     ports:
       - "${LLM_PORT:-8001}:8001"
@@ -82,7 +81,6 @@ services:
     build:
       context: ./ocr_service
       dockerfile: Dockerfile
-    image: micro-ocr/ocr-service:latest
     container_name: micro-ocr-ocr
     ports:
       - "${OCR_PORT:-9000}:9000"
@@ -112,7 +110,6 @@ services:
     build:
       context: ./preprocess_service
       dockerfile: Dockerfile
-    image: micro-ocr/preprocess-service:latest
     container_name: micro-ocr-preprocess
     ports:
       - "${PREPROCESS_PORT:-8000}:8000"

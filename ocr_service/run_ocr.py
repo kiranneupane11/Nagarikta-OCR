@@ -206,7 +206,7 @@ def run_ocr_for_path(image_path: str, card_side: str = "front") -> Tuple[str, st
 
     # ---------------- Primary OCR: PaddleOCR ----------------
     try:
-        print("→ Using PaddleOCR (primary)")
+        print("→ Using PaddleOCR")
         text = _try_paddleocr(image)
         engine = "PaddleOCR"
 
@@ -233,8 +233,8 @@ def run_ocr_for_path(image_path: str, card_side: str = "front") -> Tuple[str, st
         print(f"Tesseract failed: {e}")
 
     # ---------------- Best-effort return ----------------
-    print(" Returning best-effort PaddleOCR output")
-    return _finalize(text if 'text' in locals() else "", "PaddleOCR (best effort)")
+    print(" Returning PaddleOCR output")
+    return _finalize(text if 'text' in locals() else "", "PaddleOCR")
 
 
 def _finalize(text: str, engine: str) -> Tuple[str, str]:
