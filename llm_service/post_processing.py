@@ -302,13 +302,7 @@ class NepalAddressValidator:
             raw_data.get(PERM_MUNI_KEY), 
             raw_data.get("Permanent_Ward")
         )
-
             return {
-            "extracted_raw": raw_data,
-            "validated": {
-                "birth_place": birth,
-                "permanent_address": perm
-            },
             "final_clean": {
                 "Name": raw_data.get("Name"),
                 "Citizenship Number": raw_data.get("Citizenship_Number"),
@@ -327,12 +321,6 @@ class NepalAddressValidator:
                     "Municipality/VDC": perm["municipality"] or raw_data.get("Permanent_MetroPolitan_Sub_MetroPolitan_Municipality_VDC"),
                     "Ward": perm["ward"] or raw_data.get("Permanent_Ward")
                 }
-            },
-            "validation_notes": {
-                "birth_place_type": birth["type"],
-                "permanent_address_type": perm["type"],
-                "ward_valid_birth": birth.get("ward_valid", None),
-                "ward_valid_permanent": perm.get("ward_valid", None),
             }
         }
         else:
